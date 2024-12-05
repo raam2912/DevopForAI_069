@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addition and Subtraction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        #result {
+            font-size: 1.2em;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Addition and Subtraction</h2>
+    
+    <label for="num1">Number 1:</label>
+    <input type="number" id="num1" placeholder="Enter first number">
+
+    <label for="num2">Number 2:</label>
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <input type="button" value="Add" onclick="performAddition()">
+    <input type="button" value="Subtract" onclick="performSubtraction()">
+
+    <div id="result"></div>
+</div>
+
+<script>
+    function performAddition() {
+        let num1 = parseFloat(document.getElementById('num1').value);
+        let num2 = parseFloat(document.getElementById('num2').value);
+        let result = num1 + num2;
+        document.getElementById('result').innerHTML = "Result: " + result;
+    }
+
+    function performSubtraction() {
+        let num1 = parseFloat(document.getElementById('num1').value);
+        let num2 = parseFloat(document.getElementById('num2').value);
+        let result = num1 - num2;
+        document.getElementById('result').innerHTML = "Result: " + result;
+    }
+</script>
+
+</body>
+</html>

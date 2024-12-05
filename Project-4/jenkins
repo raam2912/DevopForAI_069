@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from Git (Replace with your actual Git URL)
+                git url: 'https://github.com/celim019/pipeline.git'
+            }
+        }
+        stage('Setup Environment') {
+            steps {
+                echo "Creating virtual environment..."
+                // Replace with the correct Python executable path
+                bat 'C:\\Users\\saali\\AppData\\Local\\Programs\\Python\\Python312\\python.exe -m venv venv'
+                
+                echo "Activating virtual environment..."
+                bat 'call venv\\Scripts\\activate.bat'
+                
+                echo "Installing dependencies..."
+                bat 'venv\\Scripts\\pip.exe install -r requirements.txt'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                echo "Running tests..."
+                bat 'venv\\Scripts\\python.exe -m pytest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo "Deploying application..."
+                // Add your deployment commands here
+            }
+        }
+    }
+    post {
+        always {
+            echo "Cleaning up workspace..."
+            cleanWs()
+        }
+    }
+}
