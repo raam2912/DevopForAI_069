@@ -1,0 +1,30 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+
+
+driver = webdriver.Chrome()
+
+driver.get("http://localhost:5000")  
+
+shopping_frequency = driver.find_element("name", "shopping_frequency")
+age_group = driver.find_element("name", "age_group")
+electronics_platform = driver.find_element("name", "electronics_platform")
+fashion_platform = driver.find_element("name", "fashion_platform")
+
+shopping_frequency.send_keys("Weekly")
+age_group.send_keys("25-34")
+electronics_platform.send_keys("Amazon")
+fashion_platform.send_keys("Myntra")
+
+
+submit_button = driver.find_element("name", "submit")
+submit_button.click()
+
+time.sleep(3)
+
+result = driver.find_element("id", "result")
+print("Prediction Result:", result.text)
+
+
+driver.quit()
